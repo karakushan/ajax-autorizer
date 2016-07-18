@@ -1,0 +1,88 @@
+# Loco Gettext template
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ajax Autorizer\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: Thu Jun 23 2016 00:47:30 GMT+0300 (Финляндия (лето))\n"
+"POT-Revision-Date: Thu Jun 23 2016 21:36:28 GMT+0300 (Финляндия (лето))\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#. Name of the plugin
+msgid "Ajax Autorizer"
+msgstr ""
+
+#. URI of the plugin
+msgid "http://profglobal.ru"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Это плагин  поможет создать на вашем сайте ajax формы регистрации и "
+"авторизации. Есть возможность добавления собственных полей при регистрации и "
+"их кастомизация."
+msgstr ""
+
+#. Author of the plugin
+msgid "Vitaliy Karakushan"
+msgstr ""
+
+#: ../template/login.php:6
+msgid "Username or email"
+msgstr ""
+
+#: ../template/login.php:12 ../template/register.php:28
+msgid "Password"
+msgstr ""
+
+#: ../template/login.php:20
+msgid "Login"
+msgstr ""
+
+#: ../template/register.php:6
+msgid "First Name"
+msgstr ""
+
+#: ../template/register.php:11
+msgid "Last Name"
+msgstr ""
+
+#: ../template/register.php:17
+msgid "Username"
+msgstr ""
+
+#: ../template/register.php:22
+msgid "E-mail"
+msgstr ""
+
+#: ../template/register.php:33
+msgid "Repassword"
+msgstr ""
+
+#: ../template/register.php:39
+msgid "Investor"
+msgstr ""
+
+#: ../template/register.php:42
+msgid "I am an investor"
+msgstr ""
+
+#: ../template/register.php:49
+msgid "Register"
+msgstr ""

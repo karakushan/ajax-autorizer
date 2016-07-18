@@ -1,0 +1,124 @@
+.aa-form label.error
+{
+    font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5;
+
+    margin: 4px 0 0 0;
+
+    color: red;
+}
+.form-row
+{
+    display: block;
+
+    margin: auto -10px 20px -10px;
+}
+.form-row:after
+{
+    display: table;
+    clear: both;
+
+    content: ' ';
+}
+.col-6
+{
+    float: left;
+
+    width: 50%;
+    padding: 0 10px;
+}
+.col-12
+{
+    float: left;
+
+    width: 100%;
+    padding: 0 10px;
+}
+.aa-form input[type=text],
+.aa-form input[type=email],
+.aa-form input[type=password]
+{
+    width: 100%;
+    height: 46px;
+    padding: 0 10px;
+
+    -webkit-transition: all 1s ease;
+            transition: all 1s ease;
+
+    color: #777!important;
+    border: 1px solid #c0c0c0;
+}
+
+.aa-form input:focus
+{
+    outline: none;
+    box-shadow: 0 0 2px #ff9100;
+}
+.aa-form label
+{
+    font-size: 18px;
+
+    margin: 0;
+    padding: 0;
+
+    color: #4a4a4a;
+}
+.aa-form .btn-submit
+{
+    font-size: 17px;
+    font-weight: bold;
+
+    width: 360px;
+    max-width: 100%;
+    padding: 10px;
+
+    -webkit-transition: all 1s ease;
+            transition: all .3s linear;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+    color: #fff;
+    border: none;
+    background: #f68824;
+}
+.aa-form .btn-submit:hover
+{
+    box-shadow: 0 0 12px rgba(0, 0, 0, .37);
+}
+.aa-form input[placeholder]
+{
+    font-family: 'Museo Sans Cyrl 300';
+    font-size: 18px;
+
+    color: #bebebe;
+}
+
+#modal-login .modal-dialog
+{
+    max-width: 309px;
+    margin: 0 auto;
+}
+.aa-form label span
+{
+    color: #ff8585;
+}
+.aa-form hr
+{
+    max-width: 360px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    border: 0;
+    border-top: 1px solid #b9b9b9;
+}
+
+@media (max-width: 468px)
+{
+    .col-6
+    {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
