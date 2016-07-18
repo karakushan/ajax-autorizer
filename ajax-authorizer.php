@@ -2,8 +2,8 @@
 /*
 Plugin Name: Ajax Autorizer
 Plugin URI: http://profglobal.ru/
-Description: Это плагин  поможет создать на вашем сайте ajax формы регистрации и авторизации. Есть возможность добавления собственных полей при регистрации и их кастомизация.
-Version: 1.0
+Description: Ajax autorizer - бесплатный плагин для регистрации, входа пользователей на Wordpress
+Version: 1.0.0
 Author: Vitaliy Karakushan
 Author URI: http://profglobal.ru/
 License: GPLv2 or later
