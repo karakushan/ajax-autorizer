@@ -14,6 +14,10 @@
 
 		
 	</div>
+	<div class="form-row text-center">
+		<a href="<?php echo wp_lostpassword_url(); ?>" title="Забыли пароль?">Забыли пароль?</a> | 
+		<a href="<?php echo wp_registration_url(); ?>" title="Зарегистрироваться">Регистрация</a> 
+	</div>
 	<div class="form-row ">
 		<div class="col-12 text-center">
 			<button type="submit" class="btn-submit"><?php _e('Login','ajax-autorizer') ?></button>

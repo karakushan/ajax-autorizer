@@ -111,10 +111,15 @@ jQuery(document).ready(function($) {
 				data: $("#aa-login-form").serialize(),
 			})
 			.done(function(data) {
-				if (data=='true') {
-					document.location.reload();
+				var dataJson=$.parseJSON(data);
+				if (dataJson.status==1) {
+					if (dataJson.redirect!=false && dataJson.redirec.length>0) {
+						document.location.href=dataJson.redirect;
+					}else{
+						document.location.reload();
+					}
 				}else{
-					$('.aa-form-info').html('Неправильное имя пользователя или email. Попробуйте ещё раз.');
+					$('.aa-form-info').html(dataJson.error);
 				}
 			})
 			.fail(function() {

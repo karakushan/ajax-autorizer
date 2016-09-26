@@ -36,18 +36,12 @@ add_action('wp_ajax_reg_user', 'aa_reg_user');
 add_action('wp_ajax_nopriv_reg_user', 'aa_reg_user');
 function aa_reg_user()
 {
-	$investor=0;
-	$an_investor=0;
+
 	$user_pass=filter_input(INPUT_GET,'aa_password',FILTER_SANITIZE_SPECIAL_CHARS);
 	$first_name=filter_input(INPUT_GET,'aa_name',FILTER_SANITIZE_SPECIAL_CHARS);
 	$last_name=filter_input(INPUT_GET,'aa_last_name',FILTER_SANITIZE_SPECIAL_CHARS);
 	$user_email=sanitize_email($_REQUEST['aa_email']);
-	if (isset($_REQUEST['aa_investors'])) {
-		$investor=(int)$_REQUEST['aa_investors'];
-	}
-	if (isset($_REQUEST['aa_an_investor'])) {
-		$an_investor=(int)$_REQUEST['aa_an_investor'];
-	}
+	
 	$userdata = array(
 		'user_pass'       => $user_pass,
 		'user_login'      => $user_email, 
@@ -59,8 +53,6 @@ function aa_reg_user()
 
 	$user_id=wp_insert_user( $userdata );
 	if( ! is_wp_error( $user_id ) ) {
-		add_user_meta( $user_id, '_investor', $investor, true );
-		add_user_meta( $user_id, '_an_investor', $an_investor, true );
 		echo "true";
 	} else {
 		echo $user_id->get_error_message();
@@ -68,9 +60,10 @@ function aa_reg_user()
 	exit();
 }
 
+// Аякс вход пользователя
 add_action('wp_ajax_aa_login', 'aa_login_user');
 add_action('wp_ajax_nopriv_aa_login', 'aa_login_user');
-function aa_login_user($value='')
+function aa_login_user()
 {
 	$username = $_REQUEST['aa_username'];
 	$password = $_REQUEST['aa_password'];
@@ -79,11 +72,15 @@ function aa_login_user($value='')
 		if (email_exists($username)) {
 			$user=get_user_by('email',$username);
 			$username=$user->user_login;
+
+		}else{
+			echo json_encode(array('status'=>0,'redirect'=>false,'error'=>'К сожалению пользователя с таким email не существует на сайте'));
+			exit;
 		}
 	}else{
 		if (!username_exists($username)) {
-			exit('false');
-			return;
+			echo json_encode(array('status'=>0,'redirect'=>false,'error'=>'К сожалению такого пользователя не существует на сайте'));
+			exit;
 		}
 	}
 	
@@ -92,13 +89,17 @@ function aa_login_user($value='')
 
 // Проверка ошибок
 	if ( is_wp_error( $auth ) ) {
-		exit('false');
+		echo json_encode(array('status'=>0,'redirect'=>false,'error'=>$auth->get_error_message()));
+		exit;
 	}
 	else {
 		nocache_headers();
 		wp_clear_auth_cookie();
 		wp_set_auth_cookie( $auth->ID );
-		exit('true');
+		$aa_auth=get_option('aa_auth');
+		$redirect=empty($aa_auth['success_redirect'])?'':esc_url($aa_auth['success_redirect']);
+		echo json_encode(array('status'=>1,'redirect'=>$redirect));
+		exit;
 	}
 }
 
