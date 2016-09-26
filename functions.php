@@ -98,9 +98,13 @@ function aa_login_user()
 		wp_set_auth_cookie( $auth->ID );
 		$aa_auth=get_option('aa_auth');
 		$redirect=empty($aa_auth['success_redirect'])?'':esc_url($aa_auth['success_redirect']);
-		echo json_encode(array('status'=>1,'redirect'=>$redirect));
+		$redirect_role=empty($aa_auth['redirect_role'])?'all_users':$aa_auth['redirect_role'];
+		$user_data=get_userdata($auth->ID);
+		if ($redirect_role=='all_users' || in_array($redirect_role, $user_data->roles)) {
+			echo json_encode(array('status'=>1,'redirect'=>$redirect));
+		}else{
+			echo json_encode(array('status'=>1,'redirect'=>false));
+		}
 		exit;
 	}
 }
-
-?>

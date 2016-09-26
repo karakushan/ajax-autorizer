@@ -113,7 +113,7 @@ jQuery(document).ready(function($) {
 			.done(function(data) {
 				var dataJson=$.parseJSON(data);
 				if (dataJson.status==1) {
-					if (dataJson.redirect!=false && dataJson.redirec.length>0) {
+					if (dataJson.redirect!=false && dataJson.redirect.length>0) {
 						document.location.href=dataJson.redirect;
 					}else{
 						document.location.reload();
@@ -124,9 +124,6 @@ jQuery(document).ready(function($) {
 			})
 			.fail(function() {
 				console.log("error");
-			})
-			.always(function() {
-				console.log("complete");
 			});
 
 			return false;

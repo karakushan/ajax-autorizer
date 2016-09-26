@@ -32,9 +32,9 @@ function aa_auth_admin_menu(){
 function aa_auth_options_page(){
 	$aa_auth=get_option('aa_auth');
 	$roles=wp_roles();
-echo "<pre>";
-	// print_r( $roles );
-echo "</pre>";
+	/*echo "<pre>";
+	print_r(wp_get_current_user());
+	echo "</pre>";*/
 
 	echo '<div class="wrap">';
 	echo "<h2>Ajax Authorizer Options</h2>"; ?>
@@ -54,7 +54,7 @@ echo "</pre>";
 				<?php endif ?>
 			</select>
 		</p>
-		<p><input type="submit" name="aa_auth_sub" value="Сохранить"></p>
+		<p><input type="submit" name="aa_auth_sub" class="button button-primary button-large" value="Сохранить"></p>
 		
 	</form>
 	<? echo '</div>';
