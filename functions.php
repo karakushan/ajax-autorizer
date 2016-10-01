@@ -86,6 +86,15 @@ function aa_login_user()
 	
 // Авторизуем
 	$auth = wp_authenticate( $username, $password );
+    $user_data=get_userdata($auth->ID);
+
+    $aa_auth=get_option('aa_auth');
+    $redirect=empty($aa_auth['success_redirect'])?'':esc_url($aa_auth['success_redirect']);
+
+    $redirect_role=empty($aa_auth['redirect_role'])?'all_users':$aa_auth['redirect_role'];
+    $role=wp_roles()->roles[$redirect_role]['name'];//получаем название допущенной роли на текущем языке
+
+
 
 // Проверка ошибок
 	if ( is_wp_error( $auth ) ) {
@@ -93,13 +102,18 @@ function aa_login_user()
 		exit;
 	}
 	else {
+        //если разрешён вход для одного типа пользователей
+        if ($aa_auth['block_form']==1 && !in_array($redirect_role, $user_data->roles)){
+
+            echo json_encode(array('status'=>0,'redirect'=>false,'error'=>'Вы не входите в категорию пользователей "'.$role.'"'));
+            exit;
+        }
+
 		nocache_headers();
 		wp_clear_auth_cookie();
 		wp_set_auth_cookie( $auth->ID );
-		$aa_auth=get_option('aa_auth');
-		$redirect=empty($aa_auth['success_redirect'])?'':esc_url($aa_auth['success_redirect']);
-		$redirect_role=empty($aa_auth['redirect_role'])?'all_users':$aa_auth['redirect_role'];
-		$user_data=get_userdata($auth->ID);
+
+
 		if ($redirect_role=='all_users' || in_array($redirect_role, $user_data->roles)) {
 			echo json_encode(array('status'=>1,'redirect'=>$redirect));
 		}else{

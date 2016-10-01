@@ -54,6 +54,10 @@ function aa_auth_options_page(){
 				<?php endif ?>
 			</select>
 		</p>
+		<p>
+			<label>Блокировать форму для пользователей с другими ролями:</label><br>
+			<input type="checkbox" name="aa_auth[block_form]" value="1" <?php checked($aa_auth['block_form'],1); ?>>
+		</p>
 		<p><input type="submit" name="aa_auth_sub" class="button button-primary button-large" value="Сохранить"></p>
 		
 	</form>
